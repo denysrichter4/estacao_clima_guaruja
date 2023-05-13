@@ -28,7 +28,7 @@ class _TopBarContentsState extends State<TopBarContents> {
     return PreferredSize(
       preferredSize: Size(screenSize.width, 1000),
       child: Container(
-        color: Colors.green,//.withOpacity(widget.opacity),
+        color: Colors.green.shade900,//.withOpacity(widget.opacity),
         child: Padding(
           padding: const EdgeInsets.all(20),
           child: Row(
@@ -37,7 +37,7 @@ class _TopBarContentsState extends State<TopBarContents> {
               const Text(
                 'Clima Guarujá',
                 style: TextStyle(
-                  color: Colors.black87,
+                  color: Colors.white,
                   fontSize: 20,
                   fontFamily: 'Montserrat',
                   fontWeight: FontWeight.w400,
@@ -57,30 +57,20 @@ class _TopBarContentsState extends State<TopBarContents> {
                               : _isHovering[0] = false;
                         });
                       },
-                      onTap: () {},
+                      onTap: () {
+
+                      },
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Text(
-                            'Apps',
+                            'Dados',
                             style: TextStyle(
                               color: _isHovering[0]
                                   ? Colors.blue.shade200
-                                  : Colors.black87,
+                                  : Colors.white,
                             ),
                           ),
-                          const SizedBox(height: 5),
-                          Visibility(
-                            maintainAnimation: true,
-                            maintainState: true,
-                            maintainSize: true,
-                            visible: _isHovering[0],
-                            child: Container(
-                              height: 2,
-                              width: 20,
-                              color: Colors.white,
-                            ),
-                          )
                         ],
                       ),
                     ),
@@ -93,30 +83,20 @@ class _TopBarContentsState extends State<TopBarContents> {
                               : _isHovering[1] = false;
                         });
                       },
-                      onTap: () {},
+                      onTap: () {
+
+                      },
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Text(
-                            'Games',
+                            'Gráficos',
                             style: TextStyle(
                               color: _isHovering[1]
                                   ? Colors.blue[200]
-                                  : Colors.black87,
+                                  : Colors.white,
                             ),
                           ),
-                          const SizedBox(height: 5),
-                          Visibility(
-                            maintainAnimation: true,
-                            maintainState: true,
-                            maintainSize: true,
-                            visible: _isHovering[1],
-                            child: Container(
-                              height: 2,
-                              width: 20,
-                              color: Colors.white,
-                            ),
-                          )
                         ],
                       ),
                     ),
@@ -129,65 +109,24 @@ class _TopBarContentsState extends State<TopBarContents> {
                               : _isHovering[2] = false;
                         });
                       },
-                      onTap: () {},
+                      onTap: () {
+
+                      },
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Text(
-                            'IOT',
+                            'Machine Learning',
                             style: TextStyle(
                               color: _isHovering[2]
                                   ? Colors.blue[200]
-                                  : Colors.black87,
+                                  : Colors.white,
                             ),
                           ),
-                          const SizedBox(height: 5),
-                          Visibility(
-                            maintainAnimation: true,
-                            maintainState: true,
-                            maintainSize: true,
-                            visible: _isHovering[1],
-                            child: Container(
-                              height: 2,
-                              width: 20,
-                              color: Colors.white,
-                            ),
-                          )
                         ],
                       ),
                     ),
                   ],
-                ),
-              ),
-              InkWell(
-                onHover: (value) {
-                  setState(() {
-                    value ? _isHovering[3] = true : _isHovering[3] = false;
-                  });
-                },
-                onTap: () {},
-                child: Text(
-                  'Cadastre-se',
-                  style: TextStyle(
-                    color: _isHovering[3] ? Colors.blue[200] : Colors.black87,
-                  ),
-                ),
-              ),
-              SizedBox(
-                width: screenSize.width / 50,
-              ),
-              InkWell(
-                onHover: (value) {
-                  setState(() {
-                    value ? _isHovering[4] = true : _isHovering[4] = false;
-                  });
-                },
-                onTap: () {},
-                child: Text(
-                  'Login',
-                  style: TextStyle(
-                    color: _isHovering[4] ? Colors.blue[200] : Colors.black87,
-                  ),
                 ),
               ),
             ],

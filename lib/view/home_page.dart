@@ -1,4 +1,6 @@
+import 'package:estacao_clima_guaruja/view/widgets/line_chart.dart';
 import 'package:flutter/material.dart';
+import 'chart_view.dart';
 import 'widgets/explore_drawer.dart';
 import 'widgets/responsive.dart';
 import 'widgets/top_bar_contents.dart';
@@ -38,13 +40,12 @@ class _HomePageState extends State<HomePage> {
       extendBodyBehindAppBar: true,
       appBar: ResponsiveWidget.isSmallScreen(context)
           ? AppBar(
-              backgroundColor: Colors.green.withOpacity(_opacity),
+              backgroundColor: Colors.green.shade900,//.withOpacity(_opacity),
               elevation: 0,
               title: const Text(
                 'Clima Guarujá',
                 style: TextStyle(
-                  color: Colors.black87,
-                  fontSize: 20,
+                  color: Colors.white,
                   fontFamily: 'Montserrat',
                   fontWeight: FontWeight.w400,
                   letterSpacing: 3,
@@ -59,20 +60,11 @@ class _HomePageState extends State<HomePage> {
       body: SingleChildScrollView(
         controller: _scrollController,
         physics: const ClampingScrollPhysics(),
-        child: Column(
-          children: [
-            Stack(
-              children: [
-                SizedBox(
-                  height: screenSize.height * 0.45,
-                  width: screenSize.width,
-                  child: Container()
-                ),
-              ],
-            ),
-            SizedBox(height: screenSize.height / 10),
-          ],
-        ),
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          alignment: Alignment.topCenter,
+          child: ChartView(screenSize: screenSize,)
+        )
       ),
     );
   }

@@ -9,17 +9,22 @@ class ExploreDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: Container(
-        color: Colors.blueGrey.shade900,
+        color: Colors.green.shade900,
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
+              Container(
+                margin: const EdgeInsets.fromLTRB(0, 32, 0, 16),
+              ),
               InkWell(
-                onTap: () {},
+                onTap: () {
+
+                },
                 child: const Text(
-                  'Login',
+                  'Dados',
                   style: TextStyle(color: Colors.white, fontSize: 22),
                 ),
               ),
@@ -31,9 +36,11 @@ class ExploreDrawer extends StatelessWidget {
                 ),
               ),
               InkWell(
-                onTap: () {},
+                onTap: () {
+
+                },
                 child: const Text(
-                  'Cadastre-se',
+                  'Gráficos',
                   style: TextStyle(color: Colors.white, fontSize: 22),
                 ),
               ),
@@ -45,52 +52,14 @@ class ExploreDrawer extends StatelessWidget {
                 ),
               ),
               InkWell(
-                onTap: () {},
+                onTap: () {
+
+                },
                 child: const Text(
-                  'Apps',
+                  'Machine Learning',
                   style: TextStyle(color: Colors.white, fontSize: 22),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 5.0, bottom: 5.0),
-                child: Divider(
-                  color: Colors.blueGrey.shade400,
-                  thickness: 2,
-                ),
-              ),
-              InkWell(
-                onTap: () {},
-                child: const Text(
-                  'Games',
-                  style: TextStyle(color: Colors.white, fontSize: 22),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 5.0, bottom: 5.0),
-                child: Divider(
-                  color: Colors.blueGrey.shade400,
-                  thickness: 2,
-                ),
-              ),
-              InkWell(
-                onTap: () {},
-                child: const Text(
-                  'IOT',
-                  style: TextStyle(color: Colors.white, fontSize: 22),
-                ),
-              ),
-              Expanded(
-                child: Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Text(
-                    'Copyright © 2022 | RichterApps',
-                    style: TextStyle(
-                      color: Colors.blueGrey.shade300,
-                      fontSize: 14,
-                    ),
-                  ),
-                ),
-              )
             ],
           ),
         ),
