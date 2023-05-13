@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 void main() async {
   //WidgetsFlutterBinding.ensureInitialized();
   //await Firebase.initializeApp();
+  /**
+   * deixar no secrets do github os arquivos do firebase
+  **/
   runApp(const MyApp());
 }
 
