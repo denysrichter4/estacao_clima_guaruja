@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'app_colors.dart';
 
 class LineChartCustom extends StatelessWidget {
-  const LineChartCustom({super.key, required this.isShowingMainData});
+  const LineChartCustom({super.key, required this.chartData, required this.numSpot,});
 
-  final bool isShowingMainData;
-
+  final List<FlSpot> chartData;
+  final double numSpot;
   @override
   Widget build(BuildContext context) {
     return LineChart(
-      isShowingMainData ? sampleData1 : sampleData2,
+      sampleData1,
       swapAnimationDuration: const Duration(milliseconds: 250),
     );
   }
@@ -23,20 +23,8 @@ class LineChartCustom extends StatelessWidget {
     borderData: borderData,
     lineBarsData: lineBarsData1,
     minX: 0,
-    maxX: 14,
-    maxY: 4,
-    minY: 0,
-  );
-
-  LineChartData get sampleData2 => LineChartData(
-    lineTouchData: lineTouchData2,
-    gridData: gridData,
-    titlesData: titlesData2,
-    borderData: borderData,
-    lineBarsData: lineBarsData2,
-    minX: 0,
-    maxX: 14,
-    maxY: 6,
+    maxX: numSpot,
+    maxY: 45,
     minY: 0,
   );
 
@@ -64,33 +52,6 @@ class LineChartCustom extends StatelessWidget {
 
   List<LineChartBarData> get lineBarsData1 => [
     lineChartBarData1_1,
-    lineChartBarData1_2,
-    lineChartBarData1_3,
-  ];
-
-  LineTouchData get lineTouchData2 => LineTouchData(
-    enabled: false,
-  );
-
-  FlTitlesData get titlesData2 => FlTitlesData(
-    bottomTitles: AxisTitles(
-      sideTitles: bottomTitles,
-    ),
-    rightTitles: AxisTitles(
-      sideTitles: SideTitles(showTitles: false),
-    ),
-    topTitles: AxisTitles(
-      sideTitles: SideTitles(showTitles: false),
-    ),
-    leftTitles: AxisTitles(
-      sideTitles: leftTitles(),
-    ),
-  );
-
-  List<LineChartBarData> get lineBarsData2 => [
-    lineChartBarData2_1,
-    lineChartBarData2_2,
-    lineChartBarData2_3,
   ];
 
   Widget leftTitleWidgets(double value, TitleMeta meta) {
@@ -100,20 +61,20 @@ class LineChartCustom extends StatelessWidget {
     );
     String text;
     switch (value.toInt()) {
-      case 1:
-        text = '1m';
+      case 0:
+        text = '0ºC';
         break;
-      case 2:
-        text = '2m';
+      case 10:
+        text = '10ºC';
         break;
-      case 3:
-        text = '3m';
+      case 20:
+        text = '20ºC';
         break;
-      case 4:
-        text = '5m';
+      case 30:
+        text = '30ºC';
         break;
-      case 5:
-        text = '6m';
+      case 40:
+        text = '40ºC';
         break;
       default:
         return Container();
@@ -125,7 +86,7 @@ class LineChartCustom extends StatelessWidget {
   SideTitles leftTitles() => SideTitles(
     getTitlesWidget: leftTitleWidgets,
     showTitles: true,
-    interval: 1,
+    interval: 5,
     reservedSize: 40,
   );
 
@@ -136,18 +97,110 @@ class LineChartCustom extends StatelessWidget {
     );
     Widget text;
     switch (value.toInt()) {
+      case 1:
+        text = const Text('1', style: style);
+        break;
       case 2:
-        text = const Text('SEPT', style: style);
+        text = const Text('2', style: style);
+        break;
+      case 3:
+        text = const Text('3', style: style);
+        break;
+      case 4:
+        text = const Text('4', style: style);
+        break;
+      case 5:
+        text = const Text('5', style: style);
+        break;
+      case 6:
+        text = const Text('6', style: style);
         break;
       case 7:
-        text = const Text('OCT', style: style);
+        text = const Text('7', style: style);
+        break;
+      case 8:
+        text = const Text('8', style: style);
+        break;
+      case 9:
+        text = const Text('9', style: style);
+        break;
+      case 10:
+        text = const Text('10', style: style);
+        break;
+      case 11:
+        text = const Text('11', style: style);
         break;
       case 12:
-        text = const Text('DEC', style: style);
+        text = const Text('12', style: style);
+        break;
+      case 13:
+        text = const Text('13', style: style);
+        break;
+      case 14:
+        text = const Text('14', style: style);
+        break;
+      case 15:
+        text = const Text('15', style: style);
+        break;
+      case 16:
+        text = const Text('16', style: style);
+        break;
+      case 17:
+        text = const Text('17', style: style);
+        break;
+      case 18:
+        text = const Text('18', style: style);
+        break;
+      case 19:
+        text = const Text('19', style: style);
+        break;
+      case 20:
+        text = const Text('20', style: style);
+        break;
+      case 21:
+        text = const Text('21', style: style);
+        break;
+      case 22:
+        text = const Text('22', style: style);
+        break;
+      case 23:
+        text = const Text('23', style: style);
         break;
       default:
         text = const Text('');
         break;
+    }
+
+    if(value.toInt() > 23){
+      switch (value.toInt()) {
+        case 24:
+          text = const Text('24', style: style);
+          break;
+        case 25:
+          text = const Text('25', style: style);
+          break;
+        case 26:
+          text = const Text('26', style: style);
+          break;
+        case 27:
+          text = const Text('27', style: style);
+          break;
+        case 28:
+          text = const Text('28', style: style);
+          break;
+        case 29:
+          text = const Text('29', style: style);
+          break;
+        case 30:
+          text = const Text('30', style: style);
+          break;
+        case 31:
+          text = const Text('31', style: style);
+          break;
+        default:
+          text = const Text('');
+          break;
+      }
     }
 
     return SideTitleWidget(
@@ -180,177 +233,71 @@ class LineChartCustom extends StatelessWidget {
   LineChartBarData get lineChartBarData1_1 => LineChartBarData(
     isCurved: true,
     color: AppColors.contentColorGreen,
-    barWidth: 8,
-    isStrokeCapRound: true,
-    dotData: FlDotData(show: false),
-    belowBarData: BarAreaData(show: false),
-    spots: const [
-      FlSpot(1, 1),
-      FlSpot(3, 1.5),
-      FlSpot(5, 1.4),
-      FlSpot(7, 3.4),
-      FlSpot(10, 2),
-      FlSpot(12, 2.2),
-      FlSpot(13, 1.8),
-    ],
-  );
-
-  LineChartBarData get lineChartBarData1_2 => LineChartBarData(
-    isCurved: true,
-    color: AppColors.contentColorPink,
-    barWidth: 8,
-    isStrokeCapRound: true,
-    dotData: FlDotData(show: false),
-    belowBarData: BarAreaData(
-      show: false,
-      color: AppColors.contentColorPink.withOpacity(0),
-    ),
-    spots: const [
-      FlSpot(1, 1),
-      FlSpot(3, 2.8),
-      FlSpot(7, 1.2),
-      FlSpot(10, 2.8),
-      FlSpot(12, 2.6),
-      FlSpot(13, 3.9),
-    ],
-  );
-
-  LineChartBarData get lineChartBarData1_3 => LineChartBarData(
-    isCurved: true,
-    color: AppColors.contentColorCyan,
-    barWidth: 8,
-    isStrokeCapRound: true,
-    dotData: FlDotData(show: false),
-    belowBarData: BarAreaData(show: false),
-    spots: const [
-      FlSpot(1, 2.8),
-      FlSpot(3, 1.9),
-      FlSpot(6, 3),
-      FlSpot(10, 1.3),
-      FlSpot(13, 2.5),
-    ],
-  );
-
-  LineChartBarData get lineChartBarData2_1 => LineChartBarData(
-    isCurved: true,
-    curveSmoothness: 0,
-    color: AppColors.contentColorGreen.withOpacity(0.5),
     barWidth: 4,
     isStrokeCapRound: true,
     dotData: FlDotData(show: false),
     belowBarData: BarAreaData(show: false),
-    spots: const [
-      FlSpot(1, 1),
-      FlSpot(3, 4),
-      FlSpot(5, 1.8),
-      FlSpot(7, 5),
-      FlSpot(10, 2),
-      FlSpot(12, 2.2),
-      FlSpot(13, 1.8),
-    ],
-  );
-
-  LineChartBarData get lineChartBarData2_2 => LineChartBarData(
-    isCurved: true,
-    color: AppColors.contentColorPink.withOpacity(0.5),
-    barWidth: 4,
-    isStrokeCapRound: true,
-    dotData: FlDotData(show: false),
-    belowBarData: BarAreaData(
-      show: true,
-      color: AppColors.contentColorPink.withOpacity(0.2),
-    ),
-    spots: const [
-      FlSpot(1, 1),
-      FlSpot(3, 2.8),
-      FlSpot(7, 1.2),
-      FlSpot(10, 2.8),
-      FlSpot(12, 2.6),
-      FlSpot(13, 3.9),
-    ],
-  );
-
-  LineChartBarData get lineChartBarData2_3 => LineChartBarData(
-    isCurved: true,
-    curveSmoothness: 0,
-    color: AppColors.contentColorCyan.withOpacity(0.5),
-    barWidth: 2,
-    isStrokeCapRound: true,
-    dotData:  FlDotData(show: true),
-    belowBarData: BarAreaData(show: false),
-    spots: const [
-      FlSpot(1, 3.8),
-      FlSpot(3, 1.9),
-      FlSpot(6, 5),
-      FlSpot(10, 3.3),
-      FlSpot(13, 4.5),
-    ],
+    spots: chartData,
   );
 }
 
-class LineChartSample1 extends StatefulWidget {
-  const LineChartSample1({super.key, required this.title});
+class LineChartSample extends StatefulWidget {
+  const LineChartSample({super.key, required this.title, required this.chartData, required this.numSpot});
   final String title;
+  final List<FlSpot> chartData;
+  final double numSpot;
   @override
-  State<StatefulWidget> createState() => LineChartSample1State();
+  State<StatefulWidget> createState() => LineChartSampleState();
 }
 
-class LineChartSample1State extends State<LineChartSample1> {
-  late bool isShowingMainData;
-
-  @override
-  void initState() {
-    super.initState();
-    isShowingMainData = true;
-  }
+class LineChartSampleState extends State<LineChartSample> {
 
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
       aspectRatio: 1.23,
-      child: Stack(
+      child: ListView(
         children: <Widget>[
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              const SizedBox(
-                height: 37,
-              ),
-               Text(
-                widget.title,
-                style: const TextStyle(
-                  color: AppColors.primary,
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 2,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(
-                height: 37,
-              ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 16, left: 6),
-                  child: LineChartCustom(isShowingMainData: isShowingMainData),
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-            ],
+          const SizedBox(
+            height: 16,
           ),
-          IconButton(
-            icon: Icon(
-              Icons.refresh,
-              color: Colors.white.withOpacity(isShowingMainData ? 1.0 : 0.5),
+          Text(
+            widget.title,
+            style: const TextStyle(
+              color: AppColors.primary,
+              fontSize: 32,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 2,
             ),
-            onPressed: () {
-              setState(() {
-                isShowingMainData = !isShowingMainData;
-              });
-            },
-          )
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(
+            height: 16,
+          ),
+          Center(
+            child: Container(
+              height: 135,
+              width: 1200,
+              child: Center(
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: <Widget>[
+                    Container(
+                      height: 150,
+                      width: 1100,
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 16, left: 6),
+                        child: LineChartCustom(chartData: widget.chartData, numSpot: widget.numSpot,),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
         ],
       ),
     );

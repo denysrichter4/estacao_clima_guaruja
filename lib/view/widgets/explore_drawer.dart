@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../home_page.dart';
+
 class ExploreDrawer extends StatelessWidget {
   const ExploreDrawer({
     Key? key,
@@ -21,7 +23,7 @@ class ExploreDrawer extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {
-
+                  Navigator.popAndPushNamed(context, Routes.data.name);
                 },
                 child: const Text(
                   'Dados',
@@ -37,7 +39,7 @@ class ExploreDrawer extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {
-
+                  Navigator.popAndPushNamed(context, Routes.chart.name);
                 },
                 child: const Text(
                   'Gráficos',
@@ -53,7 +55,7 @@ class ExploreDrawer extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {
-
+                  Navigator.popAndPushNamed(context, Routes.machine.name);
                 },
                 child: const Text(
                   'Machine Learning',

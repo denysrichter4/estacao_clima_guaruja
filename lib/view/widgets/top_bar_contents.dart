@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../home_page.dart';
+
 class TopBarContents extends StatefulWidget {
   final double opacity;
 
@@ -58,7 +60,7 @@ class _TopBarContentsState extends State<TopBarContents> {
                         });
                       },
                       onTap: () {
-
+                        Navigator.popAndPushNamed(context, Routes.data.name);
                       },
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
@@ -84,7 +86,7 @@ class _TopBarContentsState extends State<TopBarContents> {
                         });
                       },
                       onTap: () {
-
+                        Navigator.popAndPushNamed(context, Routes.chart.name);
                       },
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
@@ -110,7 +112,7 @@ class _TopBarContentsState extends State<TopBarContents> {
                         });
                       },
                       onTap: () {
-
+                        Navigator.popAndPushNamed(context, Routes.machine.name);
                       },
                       child: Column(
                         mainAxisSize: MainAxisSize.min,

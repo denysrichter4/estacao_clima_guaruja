@@ -1,15 +1,24 @@
-import 'package:estacao_clima_guaruja/view/widgets/line_chart.dart';
 import 'package:flutter/material.dart';
 import 'chart_view.dart';
+import 'data_view.dart';
+import 'home_view.dart';
+import 'ml_view.dart';
 import 'widgets/explore_drawer.dart';
 import 'widgets/responsive.dart';
 import 'widgets/top_bar_contents.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
-
+  const HomePage({super.key, required this.route});
+  final Routes route;
   @override
   State<HomePage> createState() => _HomePageState();
+}
+
+enum Routes{
+  home,
+  chart,
+  data,
+  machine,
 }
 
 class _HomePageState extends State<HomePage> {
@@ -21,6 +30,26 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       _scrollPosition = _scrollController.position.pixels;
     });
+  }
+
+  Widget getRoute(Size screenSize){
+    switch(widget.route){
+      case Routes.home : {
+        return HomeView(screenSize: screenSize, controller: _scrollController);
+      }
+      case Routes.chart : {
+        return ChartView(screenSize: screenSize, controller: _scrollController);
+      }
+      case Routes.data : {
+        return DataView(screenSize: screenSize,);
+      }
+      case Routes.machine : {
+        return MachineView(screenSize: screenSize, controller: _scrollController);
+      }
+      default:{
+        return HomeView(screenSize: screenSize, controller: _scrollController);
+      }
+    }
   }
 
   @override
@@ -57,15 +86,7 @@ class _HomePageState extends State<HomePage> {
               child: TopBarContents(_opacity),
             ),
       drawer: const ExploreDrawer(),
-      body: SingleChildScrollView(
-        controller: _scrollController,
-        physics: const ClampingScrollPhysics(),
-        child: Container(
-          padding: const EdgeInsets.all(16),
-          alignment: Alignment.topCenter,
-          child: ChartView(screenSize: screenSize,)
-        )
-      ),
+      body: getRoute(screenSize),
     );
   }
 }
