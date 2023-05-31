@@ -69,22 +69,19 @@ class _HomePageState extends State<HomePage> {
       extendBodyBehindAppBar: true,
       appBar: ResponsiveWidget.isSmallScreen(context)
           ? AppBar(
-              backgroundColor: Colors.green.shade900,//.withOpacity(_opacity),
+              backgroundColor: Colors.green.shade100,//.withOpacity(_opacity),
               elevation: 0,
-              title: const Text(
-                'Clima Guarujá',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontFamily: 'Montserrat',
-                  fontWeight: FontWeight.w400,
-                  letterSpacing: 3,
-                ),
+              title: Image.asset(
+                "assets/estacao_clima_logo.png",
+                height: 40,
+                width: 150,
               ),
             )
           : PreferredSize(
               preferredSize: Size(screenSize.width, 1000),
               child: TopBarContents(_opacity),
             ),
+
       drawer: const ExploreDrawer(),
       body: getRoute(screenSize),
     );

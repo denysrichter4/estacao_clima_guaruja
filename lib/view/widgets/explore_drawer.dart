@@ -11,7 +11,7 @@ class ExploreDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: Container(
-        color: Colors.green.shade900,
+        color: Colors.white70,
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -27,7 +27,7 @@ class ExploreDrawer extends StatelessWidget {
                 },
                 child: const Text(
                   'Dados',
-                  style: TextStyle(color: Colors.white, fontSize: 22),
+                  style: TextStyle(color: Colors.green, fontSize: 22),
                 ),
               ),
               Padding(
@@ -43,7 +43,7 @@ class ExploreDrawer extends StatelessWidget {
                 },
                 child: const Text(
                   'Gráficos',
-                  style: TextStyle(color: Colors.white, fontSize: 22),
+                  style: TextStyle(color: Colors.green, fontSize: 22),
                 ),
               ),
               Padding(
@@ -59,7 +59,7 @@ class ExploreDrawer extends StatelessWidget {
                 },
                 child: const Text(
                   'Machine Learning',
-                  style: TextStyle(color: Colors.white, fontSize: 22),
+                  style: TextStyle(color: Colors.green, fontSize: 22),
                 ),
               ),
             ],

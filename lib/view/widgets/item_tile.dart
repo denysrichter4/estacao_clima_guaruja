@@ -25,7 +25,7 @@ class ItemTile extends StatelessWidget{
           children: [
             Container(
               height: 120,
-              width: 260,
+              width: 230,
               padding: const EdgeInsets.all(12),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -37,7 +37,7 @@ class ItemTile extends StatelessWidget{
                       overflow: TextOverflow.ellipsis,
                       color: Colors.green,
                       fontWeight: FontWeight.bold,
-                      fontSize: 18,
+                      fontSize: 16,
                     ),
                   ),
                   Text(

@@ -30,21 +30,16 @@ class _TopBarContentsState extends State<TopBarContents> {
     return PreferredSize(
       preferredSize: Size(screenSize.width, 1000),
       child: Container(
-        color: Colors.green.shade900,//.withOpacity(widget.opacity),
+        color: Colors.green.shade100,//.withOpacity(widget.opacity),
         child: Padding(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(10),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Text(
-                'Clima Guarujá',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontFamily: 'Montserrat',
-                  fontWeight: FontWeight.w400,
-                  letterSpacing: 3,
-                ),
+              Image.asset(
+                  "assets/estacao_clima_logo.png",
+                height: 40,
+                width: 150,
               ),
               Expanded(
                 child: Row(
@@ -70,7 +65,7 @@ class _TopBarContentsState extends State<TopBarContents> {
                             style: TextStyle(
                               color: _isHovering[0]
                                   ? Colors.blue.shade200
-                                  : Colors.white,
+                                  : Colors.green,
                             ),
                           ),
                         ],
@@ -96,7 +91,7 @@ class _TopBarContentsState extends State<TopBarContents> {
                             style: TextStyle(
                               color: _isHovering[1]
                                   ? Colors.blue[200]
-                                  : Colors.white,
+                                  : Colors.green,
                             ),
                           ),
                         ],
@@ -122,7 +117,7 @@ class _TopBarContentsState extends State<TopBarContents> {
                             style: TextStyle(
                               color: _isHovering[2]
                                   ? Colors.blue[200]
-                                  : Colors.white,
+                                  : Colors.green,
                             ),
                           ),
                         ],
