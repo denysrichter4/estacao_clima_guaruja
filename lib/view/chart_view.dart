@@ -28,77 +28,98 @@ class _ChartViewState extends State<ChartView> {
   }
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder(
-      stream: itemsRef.onValue,
-      builder: (context, snapshot){
-        if(snapshot.hasData && !snapshot.hasError) {
-          var event = snapshot.data as DatabaseEvent;
-          var snapshot2 = event.snapshot.value;
-          if (snapshot2 == null) {
-            return const Center(child: Text("Sem items na lista"),);
-          }
-          var encoded = jsonEncode(snapshot2);
-          Map<String, dynamic> map = Map<String, dynamic>.from(jsonDecode(encoded.toString()));
-
-          List<Map<String, ItemFirebase>> items = <Map<String, ItemFirebase>>[];
-          List<Map<String, ItemFirebase>> itemsReversed = <Map<String, ItemFirebase>>[];
-          List<FlSpot> listD = [FlSpot(0,0)];
-          List<FlSpot> listH = [FlSpot(0,0)];
-          map.forEach((key, value) {
-            ItemFirebase itemFirebase = ItemFirebase.fromJson(value);
-            var keySubs = double.parse(key.substring(8, 10)).toInt();
-            var keySubsH = double.parse(key.substring(11, 13)).toInt();
-            var keySubsM = double.parse(key.substring(14, 15)).toInt();
-            if(keySubs < 32 && keySubsH == 17 && keySubsM == 3 && !itemFirebase.temperatura.isNull){
-              print("${itemFirebase.temperatura}");
-              listD.add(FlSpot(keySubs.toDouble(), itemFirebase.temperatura!));
-            }
-            items.add({key:itemFirebase});
-          });
-          for (var i = (items.length - 1); i > 0; i--){
-            itemsReversed.add(items[i]);
-          }
-
-          for (var element in itemsReversed) {
-            element.forEach((key, value) {
-              var keySubs = double.parse(key.substring(11, 13)).toInt();
-              var keySubsM = double.parse(key.substring(14, 15)).toInt();
-              if(keySubs < 24 && keySubsM == 3 && !value.temperatura.isNull){
-                print("${value.temperatura}");
-                listH.add(FlSpot(keySubs.toDouble(), value.temperatura!.toDouble()));
-              }
-            });
-          }
-
-
-
-          return CustomSingleChild(
-              controller: widget.controller,
-              content:Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(height: widget.screenSize.height / 10),
-                  SizedBox(
-                      height: widget.screenSize.height * 0.3,
-                      width: widget.screenSize.width,
-                      child: const LineChartSample(title: 'Clima em 24H', chartData: list, numSpot: 23,)
-                  ),
-                  SizedBox(height: widget.screenSize.height / 10),
-                  SizedBox(
-                      height: widget.screenSize.height * 0.3,
-                      width: widget.screenSize.width,
-                      child: const LineChartSample(title: 'Clima em 1 mês', chartData: listM, numSpot: 31,)
-                  ),
-                  SizedBox(height: widget.screenSize.height / 10),
-                ],
-              )
-          );
-
-        }else{
-          return const Center(child: CircularProgressIndicator());
-        }
-      },
+    return CustomSingleChild(
+        controller: widget.controller,
+        content:Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(height: widget.screenSize.height / 10),
+            SizedBox(
+                height: widget.screenSize.height * 0.3,
+                width: widget.screenSize.width,
+                child: const LineChartSample(title: 'Clima em 24H', chartData: list, numSpot: 23,)
+            ),
+            SizedBox(height: widget.screenSize.height / 10),
+            SizedBox(
+                height: widget.screenSize.height * 0.3,
+                width: widget.screenSize.width,
+                child: const LineChartSample(title: 'Clima em 1 mês', chartData: listM, numSpot: 31,)
+            ),
+            SizedBox(height: widget.screenSize.height / 10),
+          ],
+        )
     );
+    // return StreamBuilder(
+    //   stream: itemsRef.onValue,
+    //   builder: (context, snapshot){
+    //     if(snapshot.hasData && !snapshot.hasError) {
+    //       var event = snapshot.data as DatabaseEvent;
+    //       var snapshot2 = event.snapshot.value;
+    //       if (snapshot2 == null) {
+    //         return const Center(child: Text("Sem items na lista"),);
+    //       }
+    //       var encoded = jsonEncode(snapshot2);
+    //       Map<String, dynamic> map = Map<String, dynamic>.from(jsonDecode(encoded.toString()));
+    //
+    //       List<Map<String, ItemFirebase>> items = <Map<String, ItemFirebase>>[];
+    //       List<Map<String, ItemFirebase>> itemsReversed = <Map<String, ItemFirebase>>[];
+    //       List<FlSpot> listD = [FlSpot(0,0)];
+    //       List<FlSpot> listH = [FlSpot(0,0)];
+    //       map.forEach((key, value) {
+    //         ItemFirebase itemFirebase = ItemFirebase.fromJson(value);
+    //         var keySubs = double.parse(key.substring(8, 10)).toInt();
+    //         var keySubsH = double.parse(key.substring(11, 13)).toInt();
+    //         var keySubsM = double.parse(key.substring(14, 15)).toInt();
+    //         if(keySubs < 32 && keySubsH == 17 && keySubsM == 3 && !itemFirebase.temperatura.isNull){
+    //           print("${itemFirebase.temperatura}");
+    //           listD.add(FlSpot(keySubs.toDouble(), itemFirebase.temperatura!));
+    //         }
+    //         items.add({key:itemFirebase});
+    //       });
+    //       for (var i = (items.length - 1); i > 0; i--){
+    //         itemsReversed.add(items[i]);
+    //       }
+    //
+    //       for (var element in itemsReversed) {
+    //         element.forEach((key, value) {
+    //           var keySubs = double.parse(key.substring(11, 13)).toInt();
+    //           var keySubsM = double.parse(key.substring(14, 15)).toInt();
+    //           if(keySubs < 24 && keySubsM == 3 && !value.temperatura.isNull){
+    //             print("${value.temperatura}");
+    //             listH.add(FlSpot(keySubs.toDouble(), value.temperatura!.toDouble()));
+    //           }
+    //         });
+    //       }
+    //
+    //
+    //
+    //       return CustomSingleChild(
+    //           controller: widget.controller,
+    //           content:Column(
+    //             crossAxisAlignment: CrossAxisAlignment.center,
+    //             children: [
+    //               SizedBox(height: widget.screenSize.height / 10),
+    //               SizedBox(
+    //                   height: widget.screenSize.height * 0.3,
+    //                   width: widget.screenSize.width,
+    //                   child: const LineChartSample(title: 'Clima em 24H', chartData: list, numSpot: 23,)
+    //               ),
+    //               SizedBox(height: widget.screenSize.height / 10),
+    //               SizedBox(
+    //                   height: widget.screenSize.height * 0.3,
+    //                   width: widget.screenSize.width,
+    //                   child: const LineChartSample(title: 'Clima em 1 mês', chartData: listM, numSpot: 31,)
+    //               ),
+    //               SizedBox(height: widget.screenSize.height / 10),
+    //             ],
+    //           )
+    //       );
+    //
+    //     }else{
+    //       return const Center(child: CircularProgressIndicator());
+    //     }
+    //   },
+    // );
   }
   static const list = [
     FlSpot(0, 24),

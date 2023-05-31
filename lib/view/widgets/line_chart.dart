@@ -275,14 +275,14 @@ class LineChartSampleState extends State<LineChartSample> {
             height: 16,
           ),
           Center(
-            child: Container(
+            child: SizedBox(
               height: 135,
               width: 1200,
               child: Center(
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: <Widget>[
-                    Container(
+                    SizedBox(
                       height: 150,
                       width: 1100,
                       child: Padding(

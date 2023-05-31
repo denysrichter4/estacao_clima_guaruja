@@ -15,12 +15,7 @@ class _MachineViewState extends State<MachineView> {
     return Container(
       alignment: Alignment.topCenter,
       padding: const EdgeInsets.all(96),
-      child: Expanded(child:
-      Image.asset(
-          "assets/construction.jpg",
-        fit: BoxFit.contain,
-      )
-      ),
+      child: Image.asset("assets/construction.jpg",),
     );
     // return CustomSingleChild(
     //     controller: widget.controller,

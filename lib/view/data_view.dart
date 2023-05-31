@@ -30,21 +30,15 @@ class _DataViewState extends State<DataView> {
       child: Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.white,
-            title: Expanded(
-                child: Container(
-                    alignment: Alignment.topLeft,
-                    padding: const EdgeInsets.only(left: 8, right: 16, top: 0),
-                    child: const Text(
-                      "Dados coletados a cada minuto pelo sensor BMP280 em um ESP32",
-                      style: TextStyle(
-                          color: Colors.green,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold
-                      ),
-                      maxLines: 3,
-                      textAlign: TextAlign.start,
-                    ),
-                )
+            title: const Text(
+              "Dados coletados a cada minuto pelo sensor BMP280 em um ESP32",
+              style: TextStyle(
+                  color: Colors.green,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold
+              ),
+              maxLines: 3,
+              textAlign: TextAlign.start,
             ),
           ),
           body: Container(
